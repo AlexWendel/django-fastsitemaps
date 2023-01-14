@@ -25,8 +25,8 @@ class RequestSitemap(Sitemap):
                 raise ImproperlyConfigured("In order to use Sitemaps you must either use the sites framework or pass in a Site or RequestSite object in your view code.")
         for item in self.paginator.page(page).object_list:
             loc = self.__get('location', item)
-            if not loc.startswith('http'):
-                loc = "http://%s%s" % (site.domain, loc)
+            if not loc.startswith('https'):
+                loc = "https://%s%s" % (site.domain, loc)
             priority = self.__get('priority', item, None)
             url_info = {
                 'item':       item,
